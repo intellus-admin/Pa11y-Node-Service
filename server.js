@@ -7,7 +7,6 @@ app.get('/', (req, res) => {
     pa11y(req.query.url).then(async results => {
     // Returns a string with the results formatted as HTML
     const htmlResults = await html.results(results);
-    console.log(htmlResults);
     res.send(htmlResults);
 }, async error =>{
     var htmlTemplate = `<!DOCTYPE html>
