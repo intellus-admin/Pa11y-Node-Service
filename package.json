@@ -1,0 +1,21 @@
+{
+  "name": "pa11ydemo",
+  "version": "1.0.0",
+  "description": "A demo server to serve the request to be integrated with pa11y",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.18.8"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "pa11y": "^5.1.0",
+    "pa11y-reporter-html": "^1.0.0",
+    "puppeteer": "^1.11.0"
+  }
+}
