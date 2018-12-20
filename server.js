@@ -4,7 +4,15 @@ const html = require('pa11y-reporter-html');
 const pa11y = require('pa11y');
 
 app.get('/', (req, res) => {
-    pa11y(req.query.url).then(async results => {
+    pa11y(req.query.url,
+        {log: {
+                debug: console.log,
+                error: console.error,
+                info: console.info
+            },
+                includeNotices: true,
+                includeWarnings: true
+            }).then(async results => {
     // Returns a string with the results formatted as HTML
     const htmlResults = await html.results(results);
     res.send(htmlResults);
