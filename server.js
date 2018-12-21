@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
     const htmlResults = await html.results(results);
     res.send(htmlResults);
 }, async error =>{
+        console.log(error);
     var htmlTemplate = `<!DOCTYPE html>
     <html lang="en">
     <head>
