@@ -21,7 +21,7 @@ It fetches App Engine-specified port, or 8080 otherwise
 
 Run an accessibility test against a URL 
 
-` http://localhost:8080/?url=https://www.oercommons.org/courses/introduction-to-sociology/view `
+` http://54.86.179.197:8080/?url=https://www.oercommons.org/courses/introduction-to-sociology/view `
 
 It gives HTML view
 
