@@ -110,9 +110,9 @@ app.get('/', (req, res) => {
                     <h1>Accessibility Report For `+ req.query.url +`</h1>
     
                     <p class="counts">
-                            <span class="count error">0 errors</span>
-                            <span class="count warning">0 warnings</span>
-                            <span class="count notice">0 notices</span>
+                            <span class="count error">NULL</span>
+                            <span class="count warning">NULL</span>
+                            <span class="count notice">NULL</span>
                     </p>
     
                     <ul class="clean-list results-list">
