@@ -4,26 +4,29 @@ const html = require('pa11y-reporter-html');
 const pa11y = require('pa11y');
 
 app.get('/', (req, res) => {
-    pa11y(req.query.url,
-        {log: {
-                debug: console.log,
-                error: console.error,
-                info: console.info
-            },
-                includeNotices: true,
-                includeWarnings: true
-            }).then(async results => {
-    // Returns a string with the results formatted as HTML
-    const htmlResults = await html.results(results);
-    res.send(htmlResults);
-}, async error =>{
-        console.log(error);
-    var htmlTemplate = `<!DOCTYPE html>
+        pa11y(req.query.url,
+                {
+                        log: {
+                                debug: console.log,
+                                error: console.error,
+                                info: console.info
+                        },
+                        includeNotices: true,
+                        includeWarnings: true
+                }).then(async results => {
+                        // Returns a string with the results formatted as HTML
+                        const htmlResults = await html.results(results);
+                        res.send(htmlResults);
+                }, async error => {
+                        console.log(error);
+                        var htmlTemplate = `<!DOCTYPE html>
     <html lang="en">
     <head>
     
             <meta charset="utf-8"/>
-            <title>Accessibility Report For ` + req.query.url +`</title>
+            <title>Accessibility Report`+ req.query.url + `</title>
+            
+
     
             <style>
     
@@ -49,7 +52,8 @@ app.get('/', (req, res) => {
                             line-height: 24px;
                     }
                     h2 {
-                            font-size: 16px;
+                            font-size: 20px;
+                            margin-top: 10px;
                     }
                     pre {
                             white-space: pre-wrap;
@@ -62,11 +66,11 @@ app.get('/', (req, res) => {
                             padding: 25px;
                     }
     
-                    .counts {
-                            margin-top: 30px;
+                    .counts,.countsShown {
+                            margin-top: 20px;
                             font-size: 20px;
                     }
-                    .count {
+                    .count,.countShown {
                             display: inline-block;
                             padding: 5px;
                             border-radius: 5px;
@@ -107,14 +111,21 @@ app.get('/', (req, res) => {
     
             <div class="page">
     
-                    <h1>Accessibility Report For `+ req.query.url +`</h1>
-    
-                    <p class="counts">
-                            <span class="count error">0 Errors</span>
-                            <span class="count warning">0 Warnings</span>
-                            <span class="count notice">0 Notices</span>
+                    <h1>Accessibility Report</h1>
+                    <h2>Unfortunately, accessibility report for the selected resource is not available</h2>
+                    <h2>Selected Resource: ` + req.query.url + `</h2>
+                    <h2>Status: </h2>
+                    <p class="countsShown">
+                    <span class="countShown error">Not Available</span>
+                    <span class="countShown warning">Not Available</span>
+                    <span class="countShown notice">Not Available</span>
+                        </p>
+                    <p class="counts" style="visibility:hidden">
+                        <span class="count error">0 Errors</span>
+                        <span class="count warning">0 Warnings</span>
+                        <span class="count notice">0 Notices</span>
                     </p>
-    
+                    
                     <ul class="clean-list results-list">
                     </ul>
     
@@ -122,12 +133,12 @@ app.get('/', (req, res) => {
     
     </body>
     </html>`
-    res.send(htmlTemplate);
-});
+                        res.send(htmlTemplate);
+                });
 });
 
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}...`);
+        console.log(`Server listening on port ${PORT}...`);
 });
