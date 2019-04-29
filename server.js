@@ -115,15 +115,10 @@ app.get('/', (req, res) => {
                     <h2>Unfortunately, accessibility report for the selected resource is not available</h2>
                     <h2>Selected Resource: ` + req.query.url + `</h2>
                     <h2>Status: </h2>
-                    <p class="countsShown">
-                    <span class="countShown error">Not Available</span>
-                    <span class="countShown warning">Not Available</span>
-                    <span class="countShown notice">Not Available</span>
-                        </p>
-                    <p class="counts" style="visibility:hidden">
-                        <span class="count error">0 Errors</span>
-                        <span class="count warning">0 Warnings</span>
-                        <span class="count notice">0 Notices</span>
+                    <p class="counts">
+                        <span class="count error">Not Available</span>
+                        <span class="count warning">Not Available</span>
+                        <span class="count notice">Not Available</span>
                     </p>
                     
                     <ul class="clean-list results-list">
