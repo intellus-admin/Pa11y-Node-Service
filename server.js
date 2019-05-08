@@ -116,9 +116,9 @@ app.get('/', (req, res) => {
                     <h2>Selected Resource: ` + req.query.url + `</h2>
                     <h2>Status: </h2>
                     <p class="counts">
-                        <span class="count error">Not Available</span>
-                        <span class="count warning">Not Available</span>
-                        <span class="count notice">Not Available</span>
+                        <span class="count error">0 errors</span>
+                        <span class="count warning">0 warnings</span>
+                        <span class="count notice">0 notices</span>
                     </p>
                     
                     <ul class="clean-list results-list">
